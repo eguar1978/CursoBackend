@@ -1,14 +1,42 @@
-/**
- * 
-*! Definir la función mostrarLista que reciba una lista de datos y muestre su contenido, si no está vacía,
-*! o de lo contrario muestre el mensaje: “lista vacía”. 
-*! Luego, invocarla con datos de prueba para verificar que funciona bien en ambos casos.
 
-*? Definir una función anónima que haga lo mismo que la del punto 1, e invocarla inmediatamente,
-*? pasando una lista con 3 números como argumento.
+class Usuario {
 
-*TODO Definir la función crearMultiplicador que reciba un número y devuelva una función anónima que reciba segundo número
-*TODO y dé como resultado el producto de ambos. Luego, a partir de la función definida, 
-*TODO crear dos funciones duplicar y triplicar, y probarlas con diferentes valores.
-* 
-*/
+    constructor(nombre, apellido, libros, mascotas){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = [];
+        this.mascotas = [];
+    }
+
+    getFullName(){
+        return this.nombre + " " + this.apellido;
+    }
+
+    addMascota(nombreMascota){
+        this.mascotas.push(nombreMascota);
+    }
+
+    countMascotas(){
+        return this.mascotas.length;
+    }
+
+    addBook(nombre, autor){
+        this.libros.push({ nombre: nombre, autor: autor });
+    }
+
+    getBookNames(){
+        let nombreLibro = [];
+        this.libros.forEach(libro => {
+            nombreLibro.push(libro.nombre);
+        });
+        return nombreLibro;
+    }
+}
+
+let usuario1 = new Usuario('Andres', 'Damonte');
+usuario1.addMascota('Catalina')
+usuario1.addBook('Condorito','Autor de Condorito');
+usuario1.addBook('El Chavo','Autor del Chavo');
+console.log(usuario1.getBookNames());
+
+//console.log(usuario1);
