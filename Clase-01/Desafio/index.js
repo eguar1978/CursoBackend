@@ -9,7 +9,7 @@ class Usuario {
     }
 
     getFullName(){
-        return this.nombre + " " + this.apellido;
+        return `${this.nombre} ${this.apellido}`;
     }
 
     addMascota(nombreMascota){
@@ -33,10 +33,14 @@ class Usuario {
     }
 }
 
-let usuario1 = new Usuario('Andres', 'Damonte');
-usuario1.addMascota('Catalina')
-usuario1.addBook('Condorito','Autor de Condorito');
-usuario1.addBook('El Chavo','Autor del Chavo');
+let usuario1 = new Usuario('Pedro', 'Picapiedra');
+usuario1.addMascota('Catalina');
+usuario1.addMascota('Lola');
+usuario1.addMascota('Pancho');
+usuario1.addBook('Condorito','Pepo');
+usuario1.addBook('Patoruzú','Dante Quinterno');
+console.log(usuario1.getFullName());
 console.log(usuario1.getBookNames());
+console.log(usuario1.countMascotas());
 
-//console.log(usuario1);
+console.log('Andres Damonte, comisión 28855');
