@@ -1,46 +1,43 @@
 
 class Usuario {
 
-    constructor(nombre, apellido, libros, mascotas){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.libros = [];
-        this.mascotas = [];
+    constructor(name, lastname){
+        this.name = name;
+        this.lastname = lastname;
+        this.books = [];
+        this.pets = [];
     }
 
     getFullName(){
-        return `${this.nombre} ${this.apellido}`;
+        return `${this.name} ${this.lastname}`;
     }
 
-    addMascota(nombreMascota){
-        this.mascotas.push(nombreMascota);
+    addPet(namePet){
+        this.pets.push(namePet);
     }
 
-    countMascotas(){
-        return this.mascotas.length;
+    countPet(){
+        return this.pets.length;
     }
 
-    addBook(nombre, autor){
-        this.libros.push({ nombre: nombre, autor: autor });
+    addBook(name, author){
+        this.books.push({ name: name, author: author });
     }
 
     getBookNames(){
-        let nombreLibro = [];
-        this.libros.forEach(libro => {
-            nombreLibro.push(libro.nombre);
-        });
-        return nombreLibro;
+        const name = this.books.map(n => n.name); 
+        return name;
     }
 }
 
-let usuario1 = new Usuario('Pedro', 'Picapiedra');
-usuario1.addMascota('Catalina');
-usuario1.addMascota('Lola');
-usuario1.addMascota('Pancho');
-usuario1.addBook('Condorito','Pepo');
-usuario1.addBook('Patoruzú','Dante Quinterno');
-console.log(usuario1.getFullName());
-console.log(usuario1.getBookNames());
-console.log(usuario1.countMascotas());
+let user1 = new Usuario('Pedro', 'Picapiedra');
+user1.addPet('Catalina');
+user1.addPet('Lola');
+user1.addPet('Pancho');
+user1.addBook('Condorito','Pepo');
+user1.addBook('Patoruzú','Dante Quinterno');
+console.log(user1.getFullName());
+console.log(user1.getBookNames());
+console.log(user1.countPet());
 
 console.log('Andres Damonte, comisión 28855');
