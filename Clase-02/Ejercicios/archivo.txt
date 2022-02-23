@@ -1,0 +1,5 @@
+[1,"andres",true,false,4,"hola"]
+Data agregada
+{"nombre":"Coderhouse","curso":28855}
+Data agregada
+[1,"andres",true,false,4,"hola"]
