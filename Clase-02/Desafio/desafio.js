@@ -77,10 +77,10 @@ class Contenedor {
     };
     let productos = new Contenedor("products.json");
 
-    console.log("Imprime el contenido del archivo");
-    console.log(await productos.save(product));
+
     console.log(await productos.getAll());
-    console.log(await productos.getById(5));
-    console.log(await productos.deleteById(8));
-    console.log(await productos.deleteAll());
+    //console.log(await productos.save(product));
+    //console.log(await productos.getById(5));
+    //console.log(await productos.deleteById(8));
+    //console.log(await productos.deleteAll());
 })();
