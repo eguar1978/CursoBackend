@@ -1,3 +1,8 @@
+const express = require('express')
+
+const app = express();
+
+
 const fs = require("fs").promises;
 
 class Contenedor {
@@ -69,19 +74,53 @@ class Contenedor {
     }
 }
 
-(async() => {
-    const product = {
-        title: "Harina",
-        price: 97.75,
-        thumbnail: "http://cdn.shopify.com/s/files/1/0437/9967/5045/products/1E7C5FA3-B08D-4A86-B954-549A1A04BB86_1200x1200.jpg",
-    };
-    let productos = new Contenedor("products.json");
 
 
 
-    //console.log(await productos.getAll());
-    //console.log(await productos.save(product));
-    //console.log(await productos.getById(5));
-    //console.log(await productos.deleteById(8));
-    //console.log(await productos.deleteAll());
-})();
+
+//! TRABAJANDO CON RUTAS */
+
+let contador = 0;
+let productos = new Contenedor("products.json");
+
+app.get('/', (req, res) => {
+
+    res.send(`<h4>Ruta get <a href="https://sweet-exuberant-guilty.glitch.me/productos">"/productos"</a></h4>
+              <hr>
+              <h4>Ruta get <a href="https://sweet-exuberant-guilty.glitch.me/productoRandom">"/productoRandom"</a></h4><hr>
+             `)
+
+})
+
+app.get('/productos', (req, res) => {
+
+    (async() => {
+
+        res.json(await productos.getAll())
+
+    })();
+
+
+})
+
+app.get('/productoRandom', (req, res) => {
+
+
+    (async() => {
+
+        let array = await productos.getAll();
+        let random = Math.floor(Math.random() * array.length);
+        let resultRandom = array[random];
+        res.json(resultRandom)
+
+    })();
+
+})
+
+const PORT = 8080;
+
+const server = app.listen(PORT, () => {
+    console.log(`😃 Servidor escuchando en http://localhost:${PORT}`)
+})
+
+server.on('error', (error) => console.log(error))
